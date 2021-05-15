@@ -1,2 +1,2 @@
 # GuildMaster
-Guild Master game repositor
+Guild Master game repository
