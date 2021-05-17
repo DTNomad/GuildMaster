@@ -12,11 +12,13 @@ public class PlayFabController : MonoBehaviour
     private string userName;
     private string userPass;
     private string userPassConfirm;
-    public GameObject startPanel, loginPanel, registerPanel, leaderboardPanel;
+    private string userId;
+    public GameObject startPanel, loginPanel, registerPanel, leaderboardPanel, rosterPanel;
     [SerializeField]
     public TMP_InputField loginEmailInput, loginPasswordInput;
     public TMP_Text loginStatus, registerStatus;
     private float loginWaitTime = 1f;
+    public bool doneLoading = false;
 
     public string leaderboardResultText = "";
     //temporary vars to load from playfab
@@ -46,25 +48,6 @@ public class PlayFabController : MonoBehaviour
         {
             PlayFabSettings.TitleId = "62FF6"; // Please change this value to your own titleId from PlayFab Game Manager
         }
-        // var request = new LoginWithCustomIDRequest { CustomId = "GettingStartedGuide", CreateAccount = true };
-        // PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
-
-        // PlayerPrefs.DeleteAll();
-
-        // if (PlayerPrefs.HasKey("EMAIL"))
-        // {
-        //     Debug.Log("IF");
-        //     userEmail = PlayerPrefs.GetString("EMAIL");
-        //     userPass = PlayerPrefs.GetString("PASSWORD");
-        //     Debug.Log(userEmail + " " + userPass);
-        //     //var request = new LoginWithEmailAddressRequest { Email = userEmail, Password = userPass };
-        //     //PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
-        // }
-        // else
-        // {
-        //     Debug.Log("ELSE");
-        // }
-
     }
 
     #region start
@@ -100,6 +83,7 @@ public class PlayFabController : MonoBehaviour
 
     private void OnLoginSuccess(LoginResult result)
     {
+        userId = result.PlayFabId;
         Debug.Log("Congratulations, your login attempt was successful!");
         PlayerPrefs.SetString("EMAIL", userEmail);
         loginStatus.text = "Login Successful!";
@@ -144,6 +128,7 @@ public class PlayFabController : MonoBehaviour
         loginStatus.text = "";
         loginPanel.SetActive(false);
         leaderboardPanel.SetActive(true);
+        //rosterPanel.SetActive(true);
         SetStats();
     }
 
@@ -176,7 +161,7 @@ public class PlayFabController : MonoBehaviour
         Debug.Log(result.ToString());
     }
 
-    private void OnUpdateFailure(PlayFabError error)
+    public void OnUpdateFailure(PlayFabError error)
     {
         Debug.Log(error.GenerateErrorReport());
     }
@@ -250,6 +235,7 @@ public class PlayFabController : MonoBehaviour
             //var request = new LoginWithEmailAddressRequest { Email = userEmail, Password = userPass };
             //PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
             loginEmailInput.text = userEmail;
+            loginPasswordInput.text = "";
         }
         else
         {
@@ -354,6 +340,99 @@ public class PlayFabController : MonoBehaviour
         return leaderboardResultText;
     }
 
+    
+
     #endregion leaderboard
 
-}
+    #region inventory
+
+    public void TestFunction()
+    {
+        
+    }
+
+    #endregion inventory
+
+    public void GetUserData()
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest() { PlayFabId = userId, Keys = null }, OnGetDataSuccess, OnUpdateFailure);
+    }
+
+    private void OnGetDataSuccess(GetUserDataResult result)
+    {
+        if(result.Data == null)
+        {
+            Debug.Log("no user data found");
+        }
+        else
+        {
+            Debug.Log(result.Data["test"].Value);
+        }
+    }
+
+    public void SetUserData(string keyName, string userData)
+    {
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
+        {
+            Data = new Dictionary<string, string>()
+            {
+                {keyName, userData}
+            }
+        }, OnSetDataSuccess, OnUpdateFailure);
+    }
+
+    public void OnSetDataSuccess(UpdateUserDataResult result)
+    {
+        Debug.Log("Result data ver: " + result.DataVersion);
+    }
+
+
+
+    public void SetUserRosterData()
+    {
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
+        {
+            Data = new Dictionary<string, string>()
+            {
+                {"ROSTER", Roster.PR.SaveRosterToJSON()}
+            }
+        }, OnSetDataSuccess, OnUpdateFailure);
+    }
+
+    public void GetUserRosterData()
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest()
+        {
+            PlayFabId = userId,
+            Keys = new List<string> { "ROSTER" }
+        },
+        OnGetRosterDataSuccess,
+        OnUpdateFailure);
+    }
+
+    private void OnGetRosterDataSuccess(GetUserDataResult result)
+    {
+        if (result.Data == null)
+        {
+            Debug.Log("no roster data found");
+        }
+        else
+        {
+            //Debug.Log(result.Data["ROSTER"].Value);
+            Roster.PR.LoadRosterFromJSON(result.Data["ROSTER"].Value);
+            Roster.PR.PrintRosterArray();
+            //Debug.Log(result.Data["ROSTER1"].Value + "\n"
+            //    + result.Data["ROSTER2"].Value + "\n"
+            //    + result.Data["ROSTER3"].Value + "\n"
+            //    + result.Data["ROSTER4"].Value + "\n"
+            //    + result.Data["ROSTER5"].Value + "\n"
+            //    + result.Data["ROSTER6"].Value + "\n"
+            //    + result.Data["ROSTER7"].Value + "\n"
+            //    + result.Data["ROSTER8"].Value + "\n"
+            //    + result.Data["ROSTER9"].Value + "\n"
+            //    + result.Data["ROSTER10"].Value + "\n");
+        }
+    }
+
+
+}   

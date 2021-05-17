@@ -6,6 +6,7 @@ using TMPro;
 public class Leaderboard : MonoBehaviour
 {
     public TextMeshProUGUI leaderboardText;
+    public TMP_Dropdown leaderboardDropdown;
     string[] rankList;
 
     //reset default dropdown value on logout and relogin (make reset function for UGUI and vars), DO THIS FOR ALL CHANGED VALUES OR JUST FORCE CLOSE GAMES INSTEAD OF LOGOUT
@@ -34,11 +35,30 @@ public class Leaderboard : MonoBehaviour
 
     IEnumerator GetText()
     {
-        //0.1f is too short for some
         yield return new WaitForSeconds(0.5f);
         leaderboardText.text = PlayFabController.PFC.GetLeaderboardText();
-        //string rawText = PlayFabController.PFC.GetLeaderboardText();
-        //rankList = rawText.Split(',');
-        //leaderboardText.text = ("{0,2}{1,20}{2,3}", rankList[0], rankList[1], rankList[2]);
+    }
+
+    public void OnClickLeaderboardReload()
+    {
+        switch(leaderboardDropdown.value)
+        {
+            case 0:
+                leaderboardText.text = "";
+                break;
+            case 1:
+                Debug.Log("1");
+                PlayFabController.PFC.GetLevelLeaderboard();
+                StartCoroutine(GetText());
+                break;
+            case 2:
+                Debug.Log("2");
+                PlayFabController.PFC.GetGoldLeaderboard();
+                StartCoroutine(GetText());
+                break;
+            default:
+                Debug.Log("Error in reload leaderboard");
+                break;
+        }
     }
 }
