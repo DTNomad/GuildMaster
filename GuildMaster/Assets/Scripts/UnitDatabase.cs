@@ -10,11 +10,11 @@ public class UnitDatabase : MonoBehaviour
     {
         unitDB = new List<Unit>()
         {
-            new Unit(1, "Swordsman", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
-            new Unit(1, "Magician", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
-            new Unit(1, "Archer", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
-            new Unit(1, "Rogue", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
-            new Unit(1, "Cleric", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
+            new Unit(1, "test", "Swordsman", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
+            new Unit(1, "test", "Magician", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
+            new Unit(1, "test", "Archer", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
+            new Unit(1, "test", "Rogue", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
+            new Unit(1, "test", "Cleric", 1, 0, 10, 20, 20, 10, 10, 3, 3, 3, 3, 0.5f),
         };
     }
 }

@@ -95,7 +95,8 @@ public class PlayFabController : MonoBehaviour
         // Debug.LogWarning("Something went wrong with your first API call.  :(");
         // Debug.LogError("Here's some debug information:");
         Debug.LogError(error.GenerateErrorReport());
-        loginStatus.text = error.GenerateErrorReport();
+        //loginStatus.text = error.GenerateErrorReport();
+        loginStatus.text = "Incorrect login info or account does not exist.";
     }
 
     public void OnClickLogin()
@@ -146,8 +147,23 @@ public class PlayFabController : MonoBehaviour
 
     private void OnRegisterFailure(PlayFabError error)
     {
-        Debug.LogError(error.GenerateErrorReport());
-        registerStatus.text = error.GenerateErrorReport();
+        string errorStr = error.Error.ToString();
+        Debug.Log(errorStr);
+        //Debug.LogError(error.GenerateErrorReport());
+        //registerStatus.text = error.GenerateErrorReport();
+        switch (errorStr)
+        {
+            case "EmailAddressNotAvailable":
+                registerStatus.text = "Failed to register. Email address already in use.";
+                break;
+            case "UsernameNotAvailable":
+                registerStatus.text = "Failed to register. Display name already in use.";
+                break;
+            default:
+                registerStatus.text = error.GenerateErrorReport();
+                break;
+        }
+        
     }
 
     private void OnDisplaySuccess(UpdateUserTitleDisplayNameResult result)

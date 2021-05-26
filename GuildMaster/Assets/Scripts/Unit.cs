@@ -7,6 +7,7 @@ using UnityEngine;
 public class Unit
 {
     public int unitRarity;
+    public string unitName;
     public string unitClass;
     public int unitLevel;
     public int unitCurExp;
@@ -21,9 +22,10 @@ public class Unit
     public int unitMdef;
     public float unitSpd;
 
-    public Unit(int newRarity, string newUnitClass, int newLevel, int newCurExp, int newExpToNextLevel, int newUnitCurHp, int newUnitMaxHp, int newUnitCurMp, int newUnitMaxMp, int newAtk, int newMatk, int newDef, int newMdef, float newSpd)
+    public Unit(int newRarity, string newUnitName, string newUnitClass, int newLevel, int newCurExp, int newExpToNextLevel, int newUnitCurHp, int newUnitMaxHp, int newUnitCurMp, int newUnitMaxMp, int newAtk, int newMatk, int newDef, int newMdef, float newSpd)
     {
         unitRarity = newRarity;
+        unitName = newUnitName;
         unitClass = newUnitClass;
         unitLevel = newLevel;
         unitCurExp = newCurExp;
@@ -80,3 +82,29 @@ public class Unit
         return unitClass;
     }
 }
+
+[Serializable]
+public class ExpTable
+{
+    public Dictionary<int, int> table;
+
+    public ExpTable()
+    {
+        table = new Dictionary<int, int>();
+        initialize();
+    }
+
+    private void initialize()
+    {
+        for(int i=1; i<=100; i++)
+        {
+            table.Add(i, i * 10);
+        }
+    }
+
+    public int getExpToNextLevel(int unitLevel)
+    {
+        return table[unitLevel];
+    }
+}
+
