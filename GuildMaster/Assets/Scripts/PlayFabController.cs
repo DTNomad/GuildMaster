@@ -247,7 +247,7 @@ public class PlayFabController : MonoBehaviour
             //Debug.Log("IF");
             userEmail = PlayerPrefs.GetString("EMAIL");
             //userPass = PlayerPrefs.GetString("PASSWORD");
-            Debug.Log(userEmail);
+            //Debug.Log(userEmail);
             //var request = new LoginWithEmailAddressRequest { Email = userEmail, Password = userPass };
             //PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
             loginEmailInput.text = userEmail;
