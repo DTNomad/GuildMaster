@@ -81,6 +81,11 @@ public class Unit
     {
         return unitClass;
     }
+
+    public int GetUnitRarity()
+    {
+        return unitRarity;
+    }
 }
 
 [Serializable]

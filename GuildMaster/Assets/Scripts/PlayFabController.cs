@@ -13,7 +13,7 @@ public class PlayFabController : MonoBehaviour
     private string userPass;
     private string userPassConfirm;
     private string userId;
-    public GameObject startPanel, loginPanel, registerPanel, leaderboardPanel, rosterPanel;
+    public GameObject startPanel, loginPanel, registerPanel, leaderboardPanel, rosterPanel, hubPanel;
     [SerializeField]
     public TMP_InputField loginEmailInput, loginPasswordInput;
     public TMP_Text loginStatus, registerStatus;
@@ -128,7 +128,8 @@ public class PlayFabController : MonoBehaviour
         yield return new WaitForSeconds(loginWaitTime);
         loginStatus.text = "";
         loginPanel.SetActive(false);
-        leaderboardPanel.SetActive(true);
+        hubPanel.SetActive(true);
+        //leaderboardPanel.SetActive(true);
         //rosterPanel.SetActive(true);
         SetStats();
     }
@@ -450,5 +451,19 @@ public class PlayFabController : MonoBehaviour
         }
     }
 
+    #region hub
 
+    public void OnClickHubLeaderboard()
+    {
+        hubPanel.SetActive(false);
+        leaderboardPanel.SetActive(true);
+    }
+
+    public void OnClickHubGuild()
+    {
+        hubPanel.SetActive(false);
+        rosterPanel.SetActive(true);
+    }
+
+    #endregion hub
 }   

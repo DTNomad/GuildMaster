@@ -129,6 +129,19 @@ public class Roster : MonoBehaviour
         }
     }
 
+    public int GetRosterUnitRarity(int slotNum)
+    {
+        if (slotNum >= unlockedRosterNum)
+        {
+            return -1;
+        }
+        if ((unitRoster[slotNum] == null || unitRoster[slotNum].GetUnitClass() == "") && unlockedRoster[slotNum] == true)
+        {
+            return unitRoster[slotNum].GetUnitRarity();
+        }
+        return -1;
+    }
+
     [Serializable]
     public struct SaveObject
     {
