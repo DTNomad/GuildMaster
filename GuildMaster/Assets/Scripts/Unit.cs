@@ -21,6 +21,9 @@ public class Unit
     public int unitDef;
     public int unitMdef;
     public float unitSpd;
+    //implement exp/stat object
+    //normalize all stats/exp temporarily
+    //influence from pkmn
 
     public Unit(int newRarity, string newUnitName, string newUnitClass, int newLevel, int newCurExp, int newExpToNextLevel, int newUnitCurHp, int newUnitMaxHp, int newUnitCurMp, int newUnitMaxMp, int newAtk, int newMatk, int newDef, int newMdef, float newSpd)
     {
