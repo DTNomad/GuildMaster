@@ -77,3 +77,25 @@ Received Import Request.
 Start importing Assets/Scripts/Unit.cs using Guid(416037db18d39d4409eb7d826e0f584e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44bd556a19bd6cee50da489d12329438') in 0.039749 seconds
   Import took 0.044133 seconds .
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000914 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.838 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.29 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1943 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 93.9 MB.
+System memory in use after: 93.9 MB.
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 2423.
+Total: 1.821100 ms (FindLiveObjects: 0.181000 ms CreateObjectMapping: 0.064100 ms MarkObjects: 1.422900 ms  DeleteObjects: 0.152300 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
