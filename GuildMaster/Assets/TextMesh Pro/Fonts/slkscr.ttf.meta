@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d1db9abc8fce5b418c652923a9a76dc
+guid: 9bbd785fddbe343438395d0cbce38c37
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,9 +9,8 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Liberation Sans
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+  - Silkscreen
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
