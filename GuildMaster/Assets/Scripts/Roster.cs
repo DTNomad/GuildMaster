@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Roster : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class Roster : MonoBehaviour
     [SerializeField]
     public TMP_Text RosterText, unitLabel1, unitLabel2, unitLabel3, unitLabel4, unitLabel5, unitLabel6, unitLabel7, unitLabel8, unitLabel9, unitLabel10;
     public TMP_Text RosterButtonName1, RosterButtonLevel1;
-
+    public Button UnitButton1;
+    public Outline UnitButtonOutline1;
 
     //FUNCTS
     private void OnEnable()
@@ -335,6 +337,15 @@ public class Roster : MonoBehaviour
             return unitRoster[slotNum].GetUnitRarity();
         }
         return -1;
+    }
+
+    public void TestButtonColor()
+    {
+        var tempColor = Color.red;
+        tempColor.a = 0.25f;
+        //UnitButton1.GetComponent<Image>().color = tempColor;
+
+        UnitButtonOutline1.effectColor = tempColor;
     }
 
     [Serializable]
