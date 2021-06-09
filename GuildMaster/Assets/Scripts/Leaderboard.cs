@@ -13,16 +13,16 @@ public class Leaderboard : MonoBehaviour
 
     public void HandleLeaderboardDropdown(int val)
     {
+        //if(val == 0)
+        //{
+        //    leaderboardText.text = "";
+        //}
         if(val == 0)
-        {
-            leaderboardText.text = "";
-        }
-        else if(val == 1)
         {
             PlayFabController.PFC.GetLevelLeaderboard();
             StartCoroutine(GetText());
         }
-        else if(val == 2)
+        else if(val == 1)
         {
             PlayFabController.PFC.GetGoldLeaderboard();
             StartCoroutine(GetText());
@@ -43,16 +43,16 @@ public class Leaderboard : MonoBehaviour
     {
         switch(leaderboardDropdown.value)
         {
+            //case 0:
+                //leaderboardText.text = "";
+                //break;
             case 0:
-                leaderboardText.text = "";
-                break;
-            case 1:
-                Debug.Log("1");
+                Debug.Log("0");
                 PlayFabController.PFC.GetLevelLeaderboard();
                 StartCoroutine(GetText());
                 break;
-            case 2:
-                Debug.Log("2");
+            case 1:
+                Debug.Log("1");
                 PlayFabController.PFC.GetGoldLeaderboard();
                 StartCoroutine(GetText());
                 break;

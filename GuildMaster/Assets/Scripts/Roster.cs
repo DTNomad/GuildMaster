@@ -16,7 +16,7 @@ public class Roster : MonoBehaviour
     string tempJson;
 
     [SerializeField]
-    public TMP_Text RosterText;
+    public TMP_Text RosterText, unitLabel1, unitLabel2, unitLabel3, unitLabel4, unitLabel5, unitLabel6, unitLabel7, unitLabel8, unitLabel9, unitLabel10;
 
 
     //FUNCTS
@@ -81,19 +81,119 @@ public class Roster : MonoBehaviour
 
     public void PrintRosterArray()
     {
-        RosterText.text = "";
+        //RosterText.text = "";
+        ClearAllUnitLabels();
         for (int i=0; i<unlockedRosterNum; i++)
         {
             if(unitRoster[i] != null && unitRoster[i].GetUnitClass() != "")
             {
-                RosterText.text += unitRoster[i].GetUnitClass() + ", ";
+                //RosterText.text += unitRoster[i].GetUnitClass() + ", ";
+                UpdateUnitLabel(i+1, unitRoster[i].GetUnitName());
+                UpdateUnitLabel(i+1, "\n" + unitRoster[i].GetUnitClass());
+                UpdateUnitLabel(i+1, "\nLvl: " + unitRoster[i].GetUnitLevel());
+                UpdateUnitLabel(i+1, "\n" + unitRoster[i].GetUnitRarity() + " stars");
             }
             else
             {
-                RosterText.text += "empty, ";
+                UpdateUnitLabel(i+1, "");
+                //RosterText.text += "empty, ";
             }
         }
         //Debug.Log(RosterText.text);
+    }
+
+    public void ClearAllUnitLabels()
+    {
+        unitLabel1.text = "";
+        unitLabel2.text = "";
+        unitLabel3.text = "";
+        unitLabel4.text = "";
+        unitLabel5.text = "";
+        unitLabel6.text = "";
+        unitLabel7.text = "";
+        unitLabel8.text = "";
+        unitLabel9.text = "";
+        unitLabel10.text = "";
+    }
+
+    public void ClearUnitLabel(int unitNum)
+    {
+        switch (unitNum)
+        {
+            case 1:
+                unitLabel1.text = "";
+                break;
+            case 2:
+                unitLabel2.text = "";
+                break;
+            case 3:
+                unitLabel3.text = "";
+                break;
+            case 4:
+                unitLabel4.text = "";
+                break;
+            case 5:
+                unitLabel5.text = "";
+                break;
+            case 6:
+                unitLabel6.text = "";
+                break;
+            case 7:
+                unitLabel7.text = "";
+                break;
+            case 8:
+                unitLabel8.text = "";
+                break;
+            case 9:
+                unitLabel9.text = "";
+                break;
+            case 10:
+                unitLabel10.text = "";
+                break;
+            default:
+                Debug.Log("ERROR: Roster/ClearUnitLabel switch statement");
+                break;
+        }
+    }
+
+    public void UpdateUnitLabel(int unitNum, string newText)
+    {
+        switch (unitNum)
+        {
+            case 1:
+                unitLabel1.text += newText;
+                break;
+            case 2:
+                unitLabel2.text += newText;
+                break;
+            case 3:
+                unitLabel3.text += newText;
+                break;
+            case 4:
+                unitLabel4.text += newText;
+                break;
+            case 5:
+                unitLabel5.text += newText;
+                break;
+            case 6:
+                unitLabel6.text += newText;
+                break;
+            case 7:
+                unitLabel7.text += newText;
+                break;
+            case 8:
+                unitLabel8.text += newText;
+                break;
+            case 9:
+                unitLabel9.text += newText;
+                break;
+            case 10:
+                unitLabel10.text += newText;
+                break;
+            default:
+                Debug.Log("ERROR: Roster/UpdateUnitLabel switch statement");
+                break;
+        }
     }
 
     public string SaveRosterToJSON()

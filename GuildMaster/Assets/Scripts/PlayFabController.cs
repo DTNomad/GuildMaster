@@ -13,10 +13,11 @@ public class PlayFabController : MonoBehaviour
     private string userPass;
     private string userPassConfirm;
     private string userId;
-    public GameObject startPanel, loginPanel, registerPanel, leaderboardPanel, rosterPanel, hubPanel;
+    private string userDisplayName;
+    public GameObject startPanel, loginPanel, registerPanel, leaderboardPanel, rosterPanel, homePanel, hubPanel;
     [SerializeField]
     public TMP_InputField loginEmailInput, loginPasswordInput;
-    public TMP_Text loginStatus, registerStatus;
+    public TMP_Text loginStatus, registerStatus, hubDisplayName;
     private float loginWaitTime = 1f;
     public bool doneLoading = false;
 
@@ -129,9 +130,11 @@ public class PlayFabController : MonoBehaviour
         loginStatus.text = "";
         loginPanel.SetActive(false);
         hubPanel.SetActive(true);
+        homePanel.SetActive(true);
         //leaderboardPanel.SetActive(true);
         //rosterPanel.SetActive(true);
         SetStats();
+        LoadPlayerProfile();
     }
 
     #endregion login
@@ -453,16 +456,35 @@ public class PlayFabController : MonoBehaviour
 
     #region hub
 
-    public void OnClickHubLeaderboard()
+    //public void OnClickHubLeaderboard()
+    //{
+    //    hubPanel.SetActive(false);
+    //    leaderboardPanel.SetActive(true);
+    //}
+
+    //public void OnClickHubGuild()
+    //{
+    //    hubPanel.SetActive(false);
+    //    rosterPanel.SetActive(true);
+    //}
+
+    public void LoadPlayerProfile()
     {
-        hubPanel.SetActive(false);
-        leaderboardPanel.SetActive(true);
+        var request = new GetPlayerProfileRequest { PlayFabId = userId };
+        PlayFabClientAPI.GetPlayerProfile(request, OnLoadPlayerProfileSuccess, OnUpdateFailure);
     }
 
-    public void OnClickHubGuild()
+    private void OnLoadPlayerProfileSuccess(GetPlayerProfileResult result)
     {
-        hubPanel.SetActive(false);
-        rosterPanel.SetActive(true);
+        if (result == null)
+        {
+            Debug.Log("no player profile found");
+        }
+        else
+        {
+            userDisplayName = result.PlayerProfile.DisplayName;
+            hubDisplayName.text = userDisplayName;
+        }
     }
 
     #endregion hub

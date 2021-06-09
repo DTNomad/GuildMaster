@@ -80,14 +80,24 @@ public class Unit
         }
     }
 
+    public int GetUnitRarity()
+    {
+        return unitRarity;
+    }
+
+    public string GetUnitName()
+    {
+        return unitName;
+    }
+
     public string GetUnitClass()
     {
         return unitClass;
     }
 
-    public int GetUnitRarity()
+    public int GetUnitLevel()
     {
-        return unitRarity;
+        return unitLevel;
     }
 }
 
