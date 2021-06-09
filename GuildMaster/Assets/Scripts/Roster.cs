@@ -17,6 +17,7 @@ public class Roster : MonoBehaviour
 
     [SerializeField]
     public TMP_Text RosterText, unitLabel1, unitLabel2, unitLabel3, unitLabel4, unitLabel5, unitLabel6, unitLabel7, unitLabel8, unitLabel9, unitLabel10;
+    public TMP_Text RosterButtonName1, RosterButtonLevel1;
 
 
     //FUNCTS
@@ -92,6 +93,13 @@ public class Roster : MonoBehaviour
                 UpdateUnitLabel(i+1, "\n" + unitRoster[i].GetUnitClass());
                 UpdateUnitLabel(i+1, "\nLvl: " + unitRoster[i].GetUnitLevel());
                 UpdateUnitLabel(i+1, "\n" + unitRoster[i].GetUnitRarity() + " stars");
+
+                //temp to test button
+                if(i == 0)
+                {
+                    UpdateUnitButtonNameLabel(i + 1, unitRoster[i].GetUnitName());
+                    UpdateUnitButtonLevelLabel(i + 1, "Lvl: " + unitRoster[i].GetUnitLevel());
+                }
             }
             else
             {
@@ -114,6 +122,9 @@ public class Roster : MonoBehaviour
         unitLabel8.text = "";
         unitLabel9.text = "";
         unitLabel10.text = "";
+
+        RosterButtonName1.text = "";
+        RosterButtonLevel1.text = "";
     }
 
     public void ClearUnitLabel(int unitNum)
@@ -122,6 +133,8 @@ public class Roster : MonoBehaviour
         {
             case 1:
                 unitLabel1.text = "";
+                RosterButtonName1.text = "";
+                RosterButtonLevel1.text = "";
                 break;
             case 2:
                 unitLabel2.text = "";
@@ -162,6 +175,88 @@ public class Roster : MonoBehaviour
         {
             case 1:
                 unitLabel1.text += newText;
+                break;
+            case 2:
+                unitLabel2.text += newText;
+                break;
+            case 3:
+                unitLabel3.text += newText;
+                break;
+            case 4:
+                unitLabel4.text += newText;
+                break;
+            case 5:
+                unitLabel5.text += newText;
+                break;
+            case 6:
+                unitLabel6.text += newText;
+                break;
+            case 7:
+                unitLabel7.text += newText;
+                break;
+            case 8:
+                unitLabel8.text += newText;
+                break;
+            case 9:
+                unitLabel9.text += newText;
+                break;
+            case 10:
+                unitLabel10.text += newText;
+                break;
+            default:
+                Debug.Log("ERROR: Roster/UpdateUnitLabel switch statement");
+                break;
+        }
+    }
+
+
+    //UPDATE NAME AND LABEL WHEN MORE BUTTONS ARE MADE*****
+    public void UpdateUnitButtonNameLabel(int unitNum, string newText)
+    {
+        switch (unitNum)
+        {
+            case 1:
+                RosterButtonName1.text += newText;
+                break;
+            case 2:
+                unitLabel2.text += newText;
+                break;
+            case 3:
+                unitLabel3.text += newText;
+                break;
+            case 4:
+                unitLabel4.text += newText;
+                break;
+            case 5:
+                unitLabel5.text += newText;
+                break;
+            case 6:
+                unitLabel6.text += newText;
+                break;
+            case 7:
+                unitLabel7.text += newText;
+                break;
+            case 8:
+                unitLabel8.text += newText;
+                break;
+            case 9:
+                unitLabel9.text += newText;
+                break;
+            case 10:
+                unitLabel10.text += newText;
+                break;
+            default:
+                Debug.Log("ERROR: Roster/UpdateUnitLabel switch statement");
+                break;
+        }
+    }
+
+    public void UpdateUnitButtonLevelLabel(int unitNum, string newText)
+    {
+        switch (unitNum)
+        {
+            case 1:
+                RosterButtonLevel1.text += newText;
                 break;
             case 2:
                 unitLabel2.text += newText;
