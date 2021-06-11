@@ -18,9 +18,10 @@ public class Roster : MonoBehaviour
 
     [SerializeField]
     public TMP_Text RosterText, unitLabel1, unitLabel2, unitLabel3, unitLabel4, unitLabel5, unitLabel6, unitLabel7, unitLabel8, unitLabel9, unitLabel10;
-    public TMP_Text RosterButtonName1, RosterButtonLevel1;
-    public Button UnitButton1;
-    public Outline UnitButtonOutline1;
+    public TMP_Text RosterButtonName1, RosterButtonName2, RosterButtonName3, RosterButtonName4, RosterButtonName5, RosterButtonName6, RosterButtonName7, RosterButtonName8, RosterButtonName9, RosterButtonName10;
+    public TMP_Text RosterButtonLevel1, RosterButtonLevel2, RosterButtonLevel3, RosterButtonLevel4, RosterButtonLevel5, RosterButtonLevel6, RosterButtonLevel7, RosterButtonLevel8, RosterButtonLevel9, RosterButtonLevel10;
+    public Button UnitButton1, UnitButton2, UnitButton3, UnitButton4, UnitButton5, UnitButton6, UnitButton7, UnitButton8, UnitButton9, UnitButton10;
+    public Outline UnitButtonOutline1, UnitButtonOutline2, UnitButtonOutline3, UnitButtonOutline4, UnitButtonOutline5, UnitButtonOutline6, UnitButtonOutline7, UnitButtonOutline8, UnitButtonOutline9, UnitButtonOutline10;
 
     //FUNCTS
     private void OnEnable()
@@ -97,11 +98,8 @@ public class Roster : MonoBehaviour
                 UpdateUnitLabel(i+1, "\n" + unitRoster[i].GetUnitRarity() + " stars");
 
                 //temp to test button
-                if(i == 0)
-                {
-                    UpdateUnitButtonNameLabel(i + 1, unitRoster[i].GetUnitName());
-                    UpdateUnitButtonLevelLabel(i + 1, "Lvl: " + unitRoster[i].GetUnitLevel());
-                }
+                UpdateUnitButtonNameLabel(i + 1, unitRoster[i].GetUnitName());
+                UpdateUnitButtonLevelLabel(i + 1, "Lvl: " + unitRoster[i].GetUnitLevel());
             }
             else
             {
@@ -127,6 +125,24 @@ public class Roster : MonoBehaviour
 
         RosterButtonName1.text = "";
         RosterButtonLevel1.text = "";
+        RosterButtonName2.text = "";
+        RosterButtonLevel2.text = "";
+        RosterButtonName3.text = "";
+        RosterButtonLevel3.text = "";
+        RosterButtonName4.text = "";
+        RosterButtonLevel4.text = "";
+        RosterButtonName5.text = "";
+        RosterButtonLevel5.text = "";
+        RosterButtonName6.text = "";
+        RosterButtonLevel6.text = "";
+        RosterButtonName7.text = "";
+        RosterButtonLevel7.text = "";
+        RosterButtonName8.text = "";
+        RosterButtonLevel8.text = "";
+        RosterButtonName9.text = "";
+        RosterButtonLevel9.text = "";
+        RosterButtonName10.text = "";
+        RosterButtonLevel10.text = "";
     }
 
     public void ClearUnitLabel(int unitNum)
@@ -221,31 +237,31 @@ public class Roster : MonoBehaviour
                 RosterButtonName1.text += newText;
                 break;
             case 2:
-                unitLabel2.text += newText;
+                RosterButtonName2.text += newText;
                 break;
             case 3:
-                unitLabel3.text += newText;
+                RosterButtonName3.text += newText;
                 break;
             case 4:
-                unitLabel4.text += newText;
+                RosterButtonName4.text += newText;
                 break;
             case 5:
-                unitLabel5.text += newText;
+                RosterButtonName5.text += newText;
                 break;
             case 6:
-                unitLabel6.text += newText;
+                RosterButtonName6.text += newText;
                 break;
             case 7:
-                unitLabel7.text += newText;
+                RosterButtonName7.text += newText;
                 break;
             case 8:
-                unitLabel8.text += newText;
+                RosterButtonName8.text += newText;
                 break;
             case 9:
-                unitLabel9.text += newText;
+                RosterButtonName9.text += newText;
                 break;
             case 10:
-                unitLabel10.text += newText;
+                RosterButtonName10.text += newText;
                 break;
             default:
                 Debug.Log("ERROR: Roster/UpdateUnitLabel switch statement");
@@ -261,31 +277,31 @@ public class Roster : MonoBehaviour
                 RosterButtonLevel1.text += newText;
                 break;
             case 2:
-                unitLabel2.text += newText;
+                RosterButtonLevel2.text += newText;
                 break;
             case 3:
-                unitLabel3.text += newText;
+                RosterButtonLevel3.text += newText;
                 break;
             case 4:
-                unitLabel4.text += newText;
+                RosterButtonLevel4.text += newText;
                 break;
             case 5:
-                unitLabel5.text += newText;
+                RosterButtonLevel5.text += newText;
                 break;
             case 6:
-                unitLabel6.text += newText;
+                RosterButtonLevel6.text += newText;
                 break;
             case 7:
-                unitLabel7.text += newText;
+                RosterButtonLevel7.text += newText;
                 break;
             case 8:
-                unitLabel8.text += newText;
+                RosterButtonLevel8.text += newText;
                 break;
             case 9:
-                unitLabel9.text += newText;
+                RosterButtonLevel9.text += newText;
                 break;
             case 10:
-                unitLabel10.text += newText;
+                RosterButtonLevel10.text += newText;
                 break;
             default:
                 Debug.Log("ERROR: Roster/UpdateUnitLabel switch statement");
