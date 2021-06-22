@@ -17939,6 +17939,7 @@ MonoBehaviour:
   clockDateText: {fileID: 1510631918}
   clockTimeText: {fileID: 773366125}
   goldText: {fileID: 1941199761}
+  reputationText: {fileID: 0}
   guildLevelText: {fileID: 702561595}
 --- !u!4 &1796749290
 Transform:
@@ -20085,7 +20086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1951149261
 RectTransform:
   m_ObjectHideFlags: 0

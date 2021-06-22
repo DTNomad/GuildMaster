@@ -7,7 +7,7 @@ using UnityEngine;
 public class HubPanelController : MonoBehaviour
 {
     public GameObject hubPanel, homePanel, adventurePanel, guildPanel, blacksmithPanel, auctionPanel, leaderboardPanel, optionsPanel;
-    public TextMeshProUGUI clockDateText, clockTimeText, goldText, guildLevelText;
+    public TextMeshProUGUI clockDateText, clockTimeText, goldText, reputationText, guildLevelText;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +24,7 @@ public class HubPanelController : MonoBehaviour
     private void ReloadHubData()
     {
         goldText.text = 1 + "G";
+        reputationText.text = 1 + "R";
         guildLevelText.text = "Guild Level: " + 1;
     }
 
